@@ -1,7 +1,7 @@
 header {
   position: fixed;
   width: 100%;
-  height: 70px;
+  height: auto;
   background-image: repeating-linear-gradient(black, red);
 }
 
@@ -36,7 +36,7 @@ img {
 .allGameCard {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 100px;
+  margin-top: 150px;
   text-align: center;
 }
 
@@ -144,6 +144,59 @@ footer {
 }
 
 .loginSubmit {
+  background-color: red;
+  color: white;
+  font-size: 30px;
+  margin-right: 780px;
+  margin-top: 10px;
+  height: 50px;
+  width: auto;
+  border-radius: 10px;
+  outline-style: none;
+}
+
+.register {
+  display:flex;
+  flex-wrap: wrap;
+  margin-top: 100px;
+  background-image: url("images/register.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.registerFormBox {
+  height: 725px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid white;
+  text-align: right;
+}
+
+
+.registerForm {
+  width: 100%;
+  height: 100px;
+  margin: auto;
+}
+
+.registerInput {
+
+  font-size: 30px;
+  text-align: center;
+  margin-right: 680px;
+  margin-top: 10px;
+  height: 40px;
+  width: auto;
+  background-color: rgba(0, 0, 0, .8);
+  color: white;
+  outline-style: none;
+  border-style: none;
+  border: 1px solid red;
+}
+
+.registerSubmit {
   background-color: red;
   color: white;
   font-size: 30px;

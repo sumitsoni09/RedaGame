@@ -13,12 +13,12 @@
       <div ng-controller="AuthController as auth">
     <header>
       <h1 class="name">RedaGame</h1>
-      <div ng-if="auth.loggedInUsername">
-        <h1>Welcome, {{auth.loggedInUsername}}</h1>
-        <form ng-href="/" ng-click="auth.logOut()" method="POST">
-          <input type="submit" value="LOGOUT">
-        </form>
-        </div>
+      <h3 ng-if="auth.loggedInUsername">Welcome, {{auth.loggedInUsername}}</h3>
+      <nav ng-if="auth.loggedInUsername" class= "ui three buttons">
+        <a ng-Click="ctrl.changeInclude('userIndex')" class="ui button">HOME</a>
+        <a ng-Click="ctrl.changeInclude('logout')" class="ui button">LOGOUT</a>
+        <a ng-Click="ctrl.changeInclude('about')" class="ui button">ABOUT</a>
+      </nav>
         <nav class="ui four buttons">
           <a ng-Click="ctrl.changeInclude('mainIndex')" class="ui button">HOME</a>
           <a ng-Click="ctrl.changeInclude('login')" class="ui button">LOGIN</a>
@@ -33,7 +33,7 @@
         <!-- Show User index on login -->
         <!-- Show User modal on click -->
         <!-- Show Create button/form on login -->
-        <!-- Show Edit button/form on login -->
+        <!-- Show Update button/form on login -->
         <!-- Show Delete button/form on login -->
         <!-- Show Logout button on login -->
       </div>

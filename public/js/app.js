@@ -4,6 +4,10 @@ app.controller('MainController', ['$http', function($http){
   const controller = this;
 
   this.showModal = false;
+  this.games = '';
+  this.game = '';
+  this.createForm = {};
+
   this.includePath = 'partials/mainIndex.html';
   this.changeInclude = (path) => {
   this.includePath = 'partials/'+ path + '.html';
@@ -88,9 +92,10 @@ app.controller('AuthController', ['$http', function($http){
         password: this.password
       }
     }).then(function(response){
-      this.showCreateUser = null
       console.log(response);
-    })
+    }, function(){
+      console.log('error');
+    });
   }
 
   this.logIn = function(){
@@ -102,7 +107,6 @@ app.controller('AuthController', ['$http', function($http){
         password: this.password
       }
     }).then(function(response){
-      this.showLogIn = null
       console.log(response)
     })
   }
@@ -113,6 +117,8 @@ app.controller('AuthController', ['$http', function($http){
       url: '/app'
     }).then(function(response){
       controller.loggedInUsername = response.data.username;
+    }, function(){
+      console.log("error");
     })
   }
 
