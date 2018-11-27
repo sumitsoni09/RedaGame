@@ -8,46 +8,36 @@
     <link rel="stylesheet" href="/css/semantic.css">
     <title>RedaGame</title>
   </head>
-  <body ng-controller="MainController as ctrl">
+  <body>
+    <div ng-controller="MainController as ctrl">
+      <div ng-controller="AuthController as auth">
     <header>
       <h1 class="name">RedaGame</h1>
+      <div ng-if="auth.loggedInUsername">
+        <h1>Welcome, {{auth.loggedInUsername}}</h1>
+        <form ng-href="/" ng-click="auth.logOut()" method="POST">
+          <input type="submit" value="LOGOUT">
+        </form>
+        </div>
         <nav class="ui four buttons">
-          <button href="www.google.com" class="ui button">HOME</button>
-          <button class="ui button">LOGIN</button>
-          <button class="ui button">ABOUT</button>
-          <button class="ui button">REGISTER</button>
+          <a ng-Click="ctrl.changeInclude('mainIndex')" class="ui button">HOME</a>
+          <a ng-Click="ctrl.changeInclude('login')" class="ui button">LOGIN</a>
+          <a ng-Click="ctrl.changeInclude('about')" class="ui button">ABOUT</a>
+          <a ng-Click="ctrl.changeInclude('register')" class="ui button">REGISTER</a>
         </nav>
     </header>
 <!-- show mainIndex when not logged in games -->
-  <div class="container">
-    <div class="allGameCard">
-      <h1 class="pageHead">Top 20 Best Selling Games</h1>
-        <ul ng-repeat="game in ctrl.games">
-          <div ng-click="ctrl.showOneGame(game)" class="gameCard">
-            <li>
-              <h4>{{game.name}}</h4>
-              <img src="{{game.image}}" alt="{{game.name}}">
-              <h4>Rating: {{game.rating}}/10</h4>
-            </li>
-        </div>
-      </ul>
-      <!-- Show modal on click -->
-      <div ng-if="ctrl.showModal === true" class="modalContainer">
-        <div class="showModal">
-          <h2>{{ctrl.game.name}}</h2>
-          <img src="{{ctrl.game.image}}" alt="{{ctrl.game.name}}">
-          <p class= "description">{{ctrl.game.description}}</p>
-          <h3 class="price">Price: ${{ctrl.game.price}}</h3>
-        </div>
-        <button ng-click="ctrl.showOneGame()"> CLOSE</button>
+
+    <div class="container">
+      <div ng-include="ctrl.includePath"></div>
+        <!-- Show User index on login -->
+        <!-- Show User modal on click -->
+        <!-- Show Create button/form on login -->
+        <!-- Show Edit button/form on login -->
+        <!-- Show Delete button/form on login -->
+        <!-- Show Logout button on login -->
       </div>
     </div>
-    <!-- Show User index on login -->
-    <!-- Show User modal on click -->
-    <!-- Show Create button on login -->
-    <!-- Show Edit button on login -->
-    <!-- Show Delete button on login -->
-    <!-- Show Logout button on login -->
   </div>
     <footer>
       <h5 class="footer">Copyright © 2018, “All Rights Reserved”, Created By: Sumit Soni</h5>

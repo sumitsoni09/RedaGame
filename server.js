@@ -8,8 +8,11 @@ const db = mongoose.connection;
 // PORT
 const PORT = process.env.PORT || 3000
 
+const User = require('./models/users.js')
 const Games = require('./models/games.js')
 
+const sessionsController = require('./controllers/sessions.js')
+const usersController = require('./controllers/users.js')
 const gamesController =
 require('./controllers/games.js')
 
@@ -24,7 +27,8 @@ app.use(express.json())
 app.use(express.static('public'))
 
 // ROUTES
-
+app.use('/sessions', sessionsController)
+app.use('/users', usersController)
 app.use('/redagame', gamesController)
 
 //ERROR / SUCCESS
