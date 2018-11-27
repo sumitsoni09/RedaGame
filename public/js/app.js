@@ -3,6 +3,13 @@ const app = angular.module('GamerApp', [])
 app.controller('MainController', ['$http', function($http){
   const controller = this;
 
+  this.showModal = false;
+
+  this.showOneGame = game => {
+    this.game = game;
+    this.showModal = !this.showModal;
+}
+
   this.createGame = function() {
     $http({
       method: 'POST',
@@ -27,8 +34,6 @@ app.controller('MainController', ['$http', function($http){
     })
   }
 
-
-
   this.delete = function(game){
     $http({
       method: 'DELETE',
@@ -49,7 +54,9 @@ app.controller('MainController', ['$http', function($http){
       data: {
         name: this.updatedName,
         image: this.updatedImage,
-        description: this.updatedDescription
+        rating: this.updatedRating,
+        description: this.updatedDescription,
+        price: this.updatedPrice
       }
     }).then((response) => {
       this.getGames();
@@ -58,4 +65,10 @@ app.controller('MainController', ['$http', function($http){
     })
   }
   this.getGames();
+
+  this.showOneGame = game => {
+    this.game = game;
+    this.showModal = !this.showModal;
+  }
+  
 }])
