@@ -10,11 +10,13 @@ const PORT = process.env.PORT || 3000
 
 const User = require('./models/users.js')
 const Games = require('./models/games.js')
+const UserGames = require('./models/userGames.js')
 
 const sessionsController = require('./controllers/sessions.js')
 const usersController = require('./controllers/users.js')
 const gamesController =
 require('./controllers/games.js')
+const userGamesController = require('./controllers/userGames.js')
 
 app.use(session({
   secret: process.env.SECRET,
@@ -40,6 +42,7 @@ app.get('/app', (req, res)=>{
 app.use('/sessions', sessionsController)
 app.use('/users', usersController)
 app.use('/redagame', gamesController)
+app.use('/usergame', userGamesController)
 
 //ERROR / SUCCESS
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));

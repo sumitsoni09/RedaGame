@@ -1,8 +1,13 @@
+/*=================== Index page ====================*/
 header {
   position: fixed;
   width: 100%;
   height: auto;
   background-image: repeating-linear-gradient(black, red);
+}
+
+nav {
+  background-color: black;
 }
 
 .name {
@@ -32,7 +37,7 @@ img {
   background-attachment: fixed;
   background-position: center;
 }
-
+/*=================== mainIndex Page ================*/
 .allGameCard {
   display: flex;
   flex-wrap: wrap;
@@ -51,7 +56,7 @@ img {
   border-radius: 20px;
 }
 
-.gameCard:hover{
+.gameCard:hover {
   border: 3px solid red;
   background-image: radial-gradient(rgba(0, 0, 0, .3), rgba(255, 0, 0, .5), rgba(0, 0, 0, .8), rgba(255, 0, 0, 1));
   background-size: cover;
@@ -103,7 +108,7 @@ footer {
   margin: 20px;
   text-align: center;
 }
-
+/*=================== Login Page =================== */
 .login {
   display:flex;
   flex-wrap: wrap;
@@ -154,12 +159,12 @@ footer {
   border-radius: 10px;
   outline-style: none;
 }
-
+/*================== Register page ================= */
 .register {
   display:flex;
   flex-wrap: wrap;
   margin-top: 100px;
-  background-image: url("images/register.jpg");
+  background-image: url("images/red.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -206,4 +211,42 @@ footer {
   width: auto;
   border-radius: 10px;
   outline-style: none;
+}
+/*=================== User Index =================== */
+.allUserGameCard {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.userGameCard {
+  border: 3px solid rgba(100, 40, 255, .5);
+  height: 300px;
+  width: 300px;
+  margin: 10px;
+  margin-left: 50px;
+  text-align: center;
+  background-image: linear-gradient(rgba(0, 0, 0, .5), purple);
+  border-radius: 20px;
+}
+
+.userGameCard:hover {
+  border: 3px solid red;
+  background-image: radial-gradient(rgba(0, 0, 0, .3), rgba(255, 0, 0, .5), rgba(0, 0, 0, .8), rgba(255, 0, 0, 1));
+  background-size: cover;
+}
+
+.modalUserContainer {
+  position: fixed;
+  border: 3px solid white;
+  margin: 15px 525px;
+  width: 600px;
+  height: 600px;
+  background: rgba(0, 0, 0, .9);
+  border-radius: 40px;
+}
+
+.logOutSubmit{
+  margin: auto;
 }

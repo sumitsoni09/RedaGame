@@ -11,34 +11,36 @@
   <body>
     <div ng-controller="MainController as ctrl">
       <div ng-controller="AuthController as auth">
-    <header>
-      <h1 class="name">RedaGame</h1>
-      <h3 ng-if="auth.loggedInUsername">Welcome, {{auth.loggedInUsername}}</h3>
-      <nav ng-if="auth.loggedInUsername" class= "ui three buttons">
-        <a ng-Click="ctrl.changeInclude('userIndex')" class="ui button">HOME</a>
-        <a ng-Click="ctrl.changeInclude('logout')" class="ui button">LOGOUT</a>
-        <a ng-Click="ctrl.changeInclude('about')" class="ui button">ABOUT</a>
-      </nav>
+        <div ng-controller="UserController as user">
+      <header>
+        <h1 class="name">RedaGame</h1>
+        <h3 ng-if="auth.loggedInUsername">Welcome, {{auth.loggedInUsername}}</h3>
+        <nav ng-if="auth.loggedInUsername" class= "ui three buttons">
+          <a ng-Click="ctrl.changeInclude('userIndex')" class="ui inverted red button">HOME</a>
+          <a ng-Click="ctrl.changeInclude('logout')" class="ui inverted blue button">LOGOUT</a>
+          <a ng-Click="ctrl.changeInclude('about')" class="ui inverted red button">ABOUT</a>
+        </nav>
         <nav class="ui four buttons">
           <a ng-Click="ctrl.changeInclude('mainIndex')" class="ui button">HOME</a>
           <a ng-Click="ctrl.changeInclude('login')" class="ui button">LOGIN</a>
           <a ng-Click="ctrl.changeInclude('about')" class="ui button">ABOUT</a>
           <a ng-Click="ctrl.changeInclude('register')" class="ui button">REGISTER</a>
         </nav>
-    </header>
-<!-- show mainIndex when not logged in games -->
+      </header>
+    <!-- show mainIndex when not logged in games -->
 
-    <div class="container">
-      <div ng-include="ctrl.includePath"></div>
-        <!-- Show User index on login -->
-        <!-- Show User modal on click -->
-        <!-- Show Create button/form on login -->
-        <!-- Show Update button/form on login -->
-        <!-- Show Delete button/form on login -->
-        <!-- Show Logout button on login -->
+        <div class="container">
+          <div ng-include="ctrl.includePath"></div>
+            <!-- Show User index on login -->
+            <!-- Show User modal on click -->
+            <!-- Show Create button/form on login -->
+            <!-- Show Update button/form on login -->
+            <!-- Show Delete button/form on login -->
+            <!-- Show Logout button on login -->
+          </div>
+        </div>
       </div>
     </div>
-  </div>
     <footer>
       <h5 class="footer">Copyright © 2018, “All Rights Reserved”, Created By: Sumit Soni</h5>
     </footer>

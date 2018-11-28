@@ -41,7 +41,7 @@ app.controller('MainController', ['$http', function($http){
     })
   }
 
-  this.delete = function(game){
+  this.deleteGame = function(game){
     $http({
       method: 'DELETE',
       url: '/redagame/' + game._id
@@ -80,8 +80,94 @@ app.controller('MainController', ['$http', function($http){
 
 }])
 
+app.controller('UserController', ['$http', function($http){
+  const controller = this;
+
+  this.showModal = false;
+  this.userGames = '';
+  this.userGame = '';
+  this.createForm = {};
+
+  this.toggleShowEditFormToShow = 1;
+  this.toggleshowEditForm = (userGame) => {
+    this.userGame = userGame;
+    this.showEditForm = !this.showEditForm
+  }
+
+  this.showOneUserGame = userGame => {
+    this.userGame = userGame;
+    this.showModal = !this.showModal;
+}
+
+  this.createUserGame = function() {
+    $http({
+      method: 'POST',
+      url: '/usergame',
+      data: this.createForm
+    }).then(function(response){
+      controller.userGames.push(response.data);
+      controller.createForm = {};
+    }, error => {
+      console.log(error);
+    })
+  }
+
+  this.getUserGames = function(){
+    $http({
+      method: 'GET',
+      url: '/usergame'
+    }).then(function(response){
+      controller.userGames = response.data
+    }, error => {
+      console.log(error);
+    })
+  }
+
+  this.deleteUserGame = function(userGame){
+    $http({
+      method: 'DELETE',
+      url: '/usergame/' + userGame._id
+    }).then(function(response){
+      controller.getUserGames();
+    }, function(error){
+      console.log(error);
+    })
+  }
+
+  this.editUserGame = function(userGame){
+    console.log('the edit function is running');
+    console.log(userGame);
+    $http({
+      method: 'PUT',
+      url: '/usergame/' + userGame._id,
+      data: {
+        name: this.updatedName,
+        image: this.updatedImage,
+        rating: this.updatedRating,
+        description: this.updatedDescription,
+        price: this.updatedPrice
+      }
+    }).then((response) => {
+      this.getUserGames();
+    }, (err)=> {
+      console.log(err);
+    })
+  }
+  this.showEditForm = false;
+  this.getUserGames();
+
+  this.showOneUserGame = userGame => {
+    this.userGame = userGame;
+    this.showModal = !this.showModal;
+  }
+
+}])
+
+
 app.controller('AuthController', ['$http', function($http){
   const controller = this;
+    this.login = ''
+    this.password= ''
 
   this.createUser = function(){
     $http({
