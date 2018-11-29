@@ -14,7 +14,7 @@
         <div ng-controller="UserController as user">
       <header>
         <h1 class="name">RedaGame</h1>
-        <h3 ng-if="auth.loggedInUsername">Welcome, {{auth.loggedInUsername}}</h3>
+        <h3 class="loginName" ng-if="auth.loggedInUsername">Welcome, {{auth.loggedInUsername}}</h3>
         <nav ng-if="auth.loggedInUsername" class= "ui three buttons">
           <a ng-Click="ctrl.changeInclude('userIndex')" class="ui inverted red button">HOME</a>
           <a ng-Click="ctrl.changeInclude('logout')" class="ui inverted blue button">LOGOUT</a>

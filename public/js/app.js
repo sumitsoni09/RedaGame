@@ -83,30 +83,41 @@ app.controller('MainController', ['$http', function($http){
 app.controller('UserController', ['$http', function($http){
   const controller = this;
 
-  this.showModal = false;
+  this.showCreateModal = false;
+  this.showUserModal = false;
   this.userGames = '';
   this.userGame = '';
   this.createForm = {};
 
-  this.toggleShowEditFormToShow = 1;
-  this.toggleshowEditForm = (userGame) => {
+  this.indexOfEditFormToShow = 1;
+
+  this.toggleShowNewForm = (userGame) => {
+    this.showNewForm = !this.showNewForm
+  }
+
+  this.toggleCreateUserGame = () => {
+    this.showCreateUserGameModal = !this.showCreateUserGameModal
+  }
+
+  this.toggleShowEditForm = (userGame) => {
     this.userGame = userGame;
     this.showEditForm = !this.showEditForm
   }
 
   this.showOneUserGame = userGame => {
     this.userGame = userGame;
-    this.showModal = !this.showModal;
+    this.showUserModal = !this.showUserModal;
 }
 
   this.createUserGame = function() {
     $http({
       method: 'POST',
-      url: '/usergame',
+      url: '/usergames',
       data: this.createForm
     }).then(function(response){
       controller.userGames.push(response.data);
       controller.createForm = {};
+      this.showNewForm = null;
     }, error => {
       console.log(error);
     })
@@ -115,7 +126,7 @@ app.controller('UserController', ['$http', function($http){
   this.getUserGames = function(){
     $http({
       method: 'GET',
-      url: '/usergame'
+      url: '/usergames'
     }).then(function(response){
       controller.userGames = response.data
     }, error => {
@@ -126,7 +137,7 @@ app.controller('UserController', ['$http', function($http){
   this.deleteUserGame = function(userGame){
     $http({
       method: 'DELETE',
-      url: '/usergame/' + userGame._id
+      url: '/usergames/' + userGame._id
     }).then(function(response){
       controller.getUserGames();
     }, function(error){
@@ -139,7 +150,7 @@ app.controller('UserController', ['$http', function($http){
     console.log(userGame);
     $http({
       method: 'PUT',
-      url: '/usergame/' + userGame._id,
+      url: '/usergames/' + userGame._id,
       data: {
         name: this.updatedName,
         image: this.updatedImage,

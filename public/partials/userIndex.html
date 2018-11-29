@@ -1,7 +1,8 @@
-<div class="login">
+<div class="userIndex">
   <div class="allUserGameCard">
-    <h1 class="pageHead">My Games</h1>
-      <ul ng-repeat="userGame in user.userGames">
+    <button ng-click="user.toggleCreateUserGame()" class="ui green button">Add A Game to List</button>
+    <h1 class="userPageHead">My Favorite Games</h1>
+    <ul ng-repeat="userGame in user.userGames">
         <div ng-click="user.showOneUserGame(userGame)" class="userGameCard">
           <li>
             <h4>{{userGame.name}}</h4>
@@ -9,11 +10,11 @@
             <h4>Rating: {{userGame.rating}}/10</h4>
           </li>
         </div>
-        <button class="ui violet button" ng-click="toggleshowEditForm(userGame); user.indexOfEditFormToShow = $index">Edit</button>
-        <button class="ui red button" ng-click="user.deleteUserGame(userGame)">Delete</button>
-      </ul>
+        <button class="ui purple button" ng-click="user.toggleShowEditForm(userGame); user.indexOfEditFormToShow = $index">EDIT</button>
+        <button class="ui red button" ng-click="user.deleteUserGame(userGame)">DELETE</button>
+    </ul>
     <!-- Show modal on click -->
-    <div ng-if="user.showEditForm === true" class="modalUserContainer">
+    <div ng-if="user.showModal === true" class="modalContainer">
       <div class="showModal">
         <h2>{{user.userGame.name}}</h2>
         <img class="modalImage" src="{{user.userGame.image}}"   alt="{{user.userGame.name}}">
@@ -21,21 +22,47 @@
         <h3 class="price">Price: ${{user.userGame.price}}</h3>
       </div>
       <button ng-click="user.showOneUserGame()"> CLOSE</button>
+      </div>
+
+      <!-- Edit Form -->
+      <div class="modalContainer" ng-if="user.showEditForm === true">
+        <div class="showModal">
+      <h2>Edit {{user.userGame.name}}</h2>
+      <form ng-submit="user.editUserGame(user.userGame)">
+        <input class="editForm" type="text" ng-model="user.updatedName" placeholder="Name"/>
+        <br/>
+        <input class="editForm" type="text" ng-model="user.updatedImage" placeholder="Image URL"/>
+        <br/>
+        <input class="editForm" type="number" ng-model="user.updatedRating" placeholder="Rating"/>
+        <br/>
+        <textarea class="editFormText" type="text" ng-model="user.updatedDescription" placeholder="Description"></textarea>
+        <br/>
+        <input class="editForm" type="number" ng-model="user.updatedPrice" placeholder="Price"/>
+        <br/>
+        <input class="ui purple button" type="submit" value="Update Game Info">
+      </form>
     </div>
+    <button ng-click="user.indexOfEditFormToShow=$index; user.toggleShowEditForm()">CLOSE</button>
   </div>
-</div>
-<!-- EDIT FORM -->
-<div ng-if="user.showEditForm === true">
-  <div class="modalUserContainer">
-    <div class="showModal">
-    <h2>Edit My Game</h2>
-    <form ng-submit="user.editUserGame(user.userGame)" >
-      <input ng-model="user.updatedName" type="text" placeholder="Name of Game" />
-      <input ng-model="user.updatedImage" type="text" placeholder="Image URL"/>
-      <input ng-model="user.updatedRating" type="number" placeholder="Rating"/>
-      <textarea ng-model="user.updatedDescription" type="text" placeholder="Description of Game"></textarea>
-      <input ng-model="user.updatedPrice" type="number" placeholder="Price"/>
-    </form>
+
+      <!-- New Game Form -->
+      <div class="modalContainer" ng-if="user.showCreateUserGameModal === true">
+        <div class="showModal">
+        <h2>Add New Game</h2>
+        <form ng-submit="user.createUserGame()">
+          <input class="newForm" ng-model="user.createForm.name" type="text" placeholder="Name">
+          <br/>
+          <input class="newForm" ng-model="user.createForm.image" type="text" placeholder="URL Image">
+          <br/>
+          <input class="newForm" ng-model="user.createForm.rating" type="number" placeholder="Rating">
+          <br/>
+          <textarea class="newFormText" ng-model="user.createForm.description" type="text"placeholder="Description" ></textarea>
+          <br/>
+          <input class="newForm" ng-model="user.createForm.price" type="number" placeholder="Price">
+          <br/>
+          <input class="ui green button" type="submit" value="Create Game">
+        </form>
+      </div>
+        <button ng-click="user.toggleCreateUserGame()">CLOSE</button>
     </div>
-  </div>
 </div>

@@ -42,7 +42,7 @@ app.get('/app', (req, res)=>{
 app.use('/sessions', sessionsController)
 app.use('/users', usersController)
 app.use('/redagame', gamesController)
-app.use('/usergame', userGamesController)
+app.use('/usergames', userGamesController)
 
 //ERROR / SUCCESS
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));

@@ -16,6 +16,11 @@ nav {
   font-size: 40px;
 }
 
+.loginName {
+  color: white;
+  margin: 20px;
+}
+
 .pageHead {
   color: white;
   text-align: center;
@@ -37,11 +42,15 @@ img {
   background-attachment: fixed;
   background-position: center;
 }
+
+::placeholder{
+  color: rgba(255, 100, 0, .6);
+}
 /*=================== mainIndex Page ================*/
 .allGameCard {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 150px;
+  margin-top: 200px;
   text-align: center;
 }
 
@@ -76,7 +85,7 @@ footer {
 .modalContainer {
   position: fixed;
   border: 3px solid white;
-  margin: 50px 525px;
+  margin: 0 525px;
   width: 600px;
   height: 600px;
   background: rgba(0, 0, 0, .9);
@@ -213,7 +222,19 @@ footer {
   outline-style: none;
 }
 /*=================== User Index =================== */
+.userIndex {
+  display:flex;
+  flex-wrap: wrap;
+  margin-top: 100px;
+  background-image: url("images/loginBackground.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
 .allUserGameCard {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   margin-top: 100px;
@@ -231,6 +252,14 @@ footer {
   border-radius: 20px;
 }
 
+.userPageHead {
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  width: 100%;
+}
+
 .userGameCard:hover {
   border: 3px solid red;
   background-image: radial-gradient(rgba(0, 0, 0, .3), rgba(255, 0, 0, .5), rgba(0, 0, 0, .8), rgba(255, 0, 0, 1));
@@ -240,13 +269,59 @@ footer {
 .modalUserContainer {
   position: fixed;
   border: 3px solid white;
-  margin: 15px 525px;
+  margin: 10px 525px;
   width: 600px;
   height: 600px;
   background: rgba(0, 0, 0, .9);
   border-radius: 40px;
 }
-
-.logOutSubmit{
-  margin: auto;
+/* Edit Form */
+.editForm{
+  background-color: rgba(0, 0, 0, .8);
+  height: 40px;
+  width: auto;
+  font-size: 20px;
+  color: white;
+  margin: 10px;
+  text-align: center;
+  outline: none;
+  border: 3px solid orange;
 }
+
+.editFormText {
+  background-color: rgba(0, 0, 0, .8);
+  font-size: 20px;
+  height: 100px;
+  width: 200px;
+  outline: none;
+  resize: none;
+  color: white;
+  border: 3px solid orange;
+}
+
+/* Create Form */
+.newForm {
+  background-color: rgba(0, 0, 0, .8);
+  height: 40px;
+  width: auto;
+  font-size: 20px;
+  color: white;
+  margin: 10px;
+  text-align: center;
+  outline: none;
+  border: 3px solid orange;
+}
+
+.newFormText {
+  background-color: rgba(0, 0, 0, .8);
+  font-size: 20px;
+  height: 100px;
+  width: auto;
+  outline: none;
+  resize: none;
+  color: white;
+  border: 3px solid orange;
+  text-align: center;
+}
+
+/* LOGOUT Page */
