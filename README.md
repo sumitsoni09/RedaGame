@@ -15,3 +15,5 @@ header {
 }
 
 While working with the CSS I also fell in love with the semantic css framework and used it mostly on coloring my buttons. I didn't really find the containers helpful from the framework for my project, but would love to use it again.
+
+Link to my live app: http://redagme.herokuapp.com/
